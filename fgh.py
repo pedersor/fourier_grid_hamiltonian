@@ -1,5 +1,6 @@
 import numpy as np
 from scipy.linalg import eigh
+import time
 
 
 def get_hamiltonian(grids, pot):
@@ -83,7 +84,10 @@ if __name__ == "__main__":
     grids = np.linspace(boundary[0], boundary[1], num_grid_points + 1)
 
   potential = poschl_teller_potential(grids, lam=2)
+  t=time.time()
   H_sampled = get_hamiltonian(grids, potential)
+  print("Time to get H: ", time.time()-t)
+  
 
   eigvals, eigvecs = eigh(H_sampled)
 
