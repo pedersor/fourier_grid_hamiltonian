@@ -3,22 +3,6 @@ import numpy as np
 cimport numpy as np
 from cython.parallel import prange
 
-def test_fun(int maxval):
-
-  cdef unsigned long long int total
-  cdef int k
-  cdef float t1, t2, t
-
-  t1=time.time()
-
-  for k in range(maxval):
-      total = total + k
-
-  t2=time.time()
-  t = t2-t1
-  print("%.100f" % t)
-
-  return t
 
 cpdef get_open_ham(double[:] grids, double[:] pot):
 

@@ -1,6 +1,9 @@
 
-
+# virtual environments
 venv*
+
+# pip install info
+*.egg-info
 
 # generated c code
 *.c

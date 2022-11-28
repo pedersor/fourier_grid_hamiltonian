@@ -1,10 +1,12 @@
 import time
 import numpy as np
-from test_cython import get_open_ham
+from fourier_grid_hamiltonian.fgh_fast import get_open_ham
 from scipy.linalg import eigh
+
 
 def poschl_teller_potential(grids, lam):
   return -(lam * (lam + 1) / 2) / (np.cosh(grids))**2
+
 
 if __name__ == "__main__":
 
@@ -18,9 +20,9 @@ if __name__ == "__main__":
     grids = np.linspace(boundary[0], boundary[1], num_grid_points + 1)
 
   potential = poschl_teller_potential(grids, lam=2)
-  t=time.time()
+  t = time.time()
   H_sampled = get_open_ham(grids, potential)
-  print("Time to get H: ", time.time()-t)
+  print("Time to get H: ", time.time() - t)
 
   eigvals, eigvecs = eigh(H_sampled)
   print('{:.20}'.format(eigvals[0]))
