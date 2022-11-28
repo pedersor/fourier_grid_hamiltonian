@@ -29,7 +29,7 @@ setup(
         "Operating System :: OS Independent",
         "Development Status :: 3 - Alpha",
     ],
-    python_requires=('==3.8.0'),
+    python_requires=('>=3.8.0'),
     install_requires=requirements,
     packages=find_packages(),
     ext_modules=cythonize(ext_modules),
