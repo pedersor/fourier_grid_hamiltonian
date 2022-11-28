@@ -22,26 +22,3 @@ def get_open_ham(grids, pot):
         ham[j, i] = ham[i, j]
 
   return ham
-
-
-def get_periodic_ham(grids, pot):
-  """ Gets Hamiltonian for periodic potential (pot). """
-
-  num_grids = len(grids)
-  ham = np.zeros([num_grids, num_grids])
-  pi = np.pi
-  m = (num_grids - 1) / 2.
-
-  for i in range(num_grids):
-    for j in range(i + 1):
-      if i == j:
-        ham[i, j] = ((m * (m + 1)) / 3.) + pot[i]
-        ham[i, j] = .5 * ((-1.)**(i - j)) * ham[i, j]
-      else:
-        ham[i, j] = (.5 * (np.cos(pi * (i - j) / (2. * m + 1.))) /
-                     ((np.sin(pi * (i - j) / ((2. * m) + 1.)))**2))
-        ham[i, j] = .5 * ((-1.)**(i - j)) * ham[i, j]
-        # Hermitian symmetry
-        ham[j, i] = ham[i, j]
-
-  return ham

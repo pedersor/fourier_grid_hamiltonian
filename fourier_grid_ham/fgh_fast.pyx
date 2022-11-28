@@ -27,27 +27,3 @@ cpdef get_open_ham(double[:] grids, double[:] pot):
         ham[j, i] = ham[i, j]
 
   return ham
-
-cpdef get_periodic_ham(double[:] grids, double[:] pot):
-  """ Gets Hamiltonian for periodic potential (pot). """
-
-  cdef int num_grids = len(grids)
-  cdef double m = (num_grids - 1) / 2
-  cdef double pi = np.pi
-
-  cdef np.ndarray[dtype=double, ndim=2] ham = np.zeros([num_grids, num_grids])
-  
-  cdef int i, j
-  for i in range(num_grids):
-    for j in range(i + 1):
-      if i == j:
-        ham[i, j] = ((m * (m + 1)) / 3.) + pot[i]
-        ham[i, j] = .5 * ((-1.)**(i - j)) * ham[i, j]
-      else:
-        ham[i, j] = (.5 * (np.cos(pi * (i - j) / (2. * m + 1.))) /
-                     ((np.sin(pi * (i - j) / ((2. * m) + 1.)))**2))
-        ham[i, j] = .5 * ((-1.)**(i - j)) * ham[i, j]
-        # Hermitian symmetry
-        ham[j, i] = ham[i, j]
-
-  return ham
