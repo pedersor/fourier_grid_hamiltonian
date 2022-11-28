@@ -8,8 +8,8 @@ $ cd fourier_grid_hamiltonian
 $ python3 -m pip install pip --upgrade
 $ python3 -m pip install .
 ```
-Note that this code uses Cython, so installation through `setup.py` is recommended.
+Note that this code uses Cython, so the above installation through `setup.py` is recommended.
 
 ## Example
 
-Please check `example.py` for a simple example using the Poschl-Teller potential.
+Please check `examples/example.py` for a simple example using the Poschl-Teller potential.
