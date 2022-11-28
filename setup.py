@@ -4,8 +4,8 @@ import numpy
 
 ext_modules = [
     Extension(
-        "fgh_fast", 
-        ["fgh_fast.pyx"], 
+        "fourier_grid_ham.fgh_fast",
+        ["fourier_grid_ham/fgh_fast.pyx"],
         extra_compile_args=['-fopenmp'],
         extra_link_args=['-fopenmp'],
         include_dirs=[numpy.get_include()],
@@ -32,6 +32,6 @@ setup(
     python_requires=('==3.8.0'),
     install_requires=requirements,
     packages=find_packages(),
-    ext_modules = cythonize(ext_modules),
+    ext_modules=cythonize(ext_modules),
     include_dirs=[numpy.get_include()],
 )

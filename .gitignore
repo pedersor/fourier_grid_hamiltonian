@@ -6,6 +6,7 @@ venv*
 *.egg-info
 
 # generated c code
+__pycache__/
 *.c
 *.so
 build/
